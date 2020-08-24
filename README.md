@@ -53,22 +53,26 @@
 	* 在布局管理器的中部是一个 10*10 的文本区域。 该文本区域用来输入和显示日志的内容。 在布局管理器的南部放置了两个按钮分别表示“保存日志”和“删除日志”。 
 	* 在用户使用鼠标点击这两个按钮时会调用 actionPerformed 方法，以执行保存日志或删除日志的操作。
 	* 执行保存日志的操作需要调用方法“savedir”。 该方法的参数为三个整形变量，分别是:year, month, day。 
-	* 当用户点击保存日志按钮后，该方法首先通过showConfirmDialog方法弹出对话框询问用户是否保存日志，如果用户选择“是”，则该方法将日志内容添加到所选日期的hashtable散列表对象中，然后将其存为文本文件，保存在File方法建立的文本文件中。
+	* 当用户点击保存日志按钮后，该方法首先通过 `showConfirmDialog`方法弹出对话框询问用户是否保存日志，如果用户选择“是”，则该方法将日志内容添加到所选日期的hashtable散列表对象中，然后将其存为文本文件，保存在File方法建立的文本文件中。
 	* 执行删除日志的操作需要调用方法“rmdir”。 该方法的参数同样为三个分别为 year, month, day 的整形变量。 
-	* 当用户点击删除日志按钮，通过actionPerformed方法获得点击的动作，该方法首先通过showConfirmDialog方法弹出对话框询问用户是否删除日志，如果用户选择“是”，则该方法首先到文件中读取散列表对象，然后删除该对象，以达到删除日志的目的。 如果该方法无法读取散列表对象，即所选日期没有日志，则弹出对话框通知用户当日没有日志记录。
+	* 当用户点击删除日志按钮，通过 `actionPerformed` 方法获得点击的动作，该方法首先通过 `showConfirmDialog` 方法弹出对话框询问用户是否删除日志，如果用户选择“是”，则该方法首先到文件中读取散列表对象，然后删除该对象，以达到删除日志的目的。 如果该方法无法读取散列表对象，即所选日期没有日志，则弹出对话框通知用户当日没有日志记录。
 	* 如果用户在选择了一个没有日志记录的日期后点击“删除日志”按钮，系统会通过rm_text方法弹出对话框提示该日无日志记录。该类还有一个名为“lookdir”的方法。 该方法具有三个分别是 year, month, day 的整形参数。 当用户在日历牌中选定一个日期后该方法会判断该日期是否存在日志记录，若有则弹出对话框询问用户是否要查看日志，如果用户选择查看日志，该方法则从带有日期项的散列表中获取日志内容并在文本区域显示出日志的内容。 如果该日期没有日志记录，则在文本区域显示“无日志记录”。
 	* 图形界面至少要有一个顶级Swing容器，顶级Swing容器为其它Swing组件在屏幕上的绘制和处理事件提供支持;
 	* 常用的顶级容器：Frame（框架）：表示主程序窗口JDialog（对话框）：每个JDialog对象表示一个对话框，对话框属于二级窗口JApplet（小程序）：在浏览器内显示一个小程序界面一个框架包括边界、菜单栏、工具栏、状态栏，以及中间占主要部分的窗格窗格也可以看作是一种面板，但它是框架的一个组成部分组件不会直接放到框架上，而是放在若干个面板上，这些面板再放到窗格上用框架对象的getContentPane()函数来获得窗格，再调用窗格的add()函数放置面板。
-public static void main(String[ ]args){
-JFrame frame=new JFrame("SwingApplication");
-JPanel panel1=new JPanel();
-frame.getContentPane().add(panel1,BorderLayout.CENTER);
-	* 关键是java.awt.*里面的两个与显示设备有关的类：GraphicsEnvironment和GraphicsDevice。GraphicsEnvironment为Java应用程序提供了特定平台的 GraphicsDevice对象和 Font 对象集合。这些GraphicsDevice可以是各种本机和远端机器的资源，如屏幕、打印机或者是Image Buffer,甚至是Graphics2D绘图方法的目标对象。
+	
+	```
+	public static void main(String[ ]args){
+	JFrame frame=new JFrame("SwingApplication");
+	JPanel panel1=new JPanel();
+	frame.getContentPane().add(panel1,BorderLayout.CENTER);
+	```
+
+	* 关键是 `java.awt.*`里面的两个与显示设备有关的类：`GraphicsEnvironment` 和 `GraphicsDevice`。`GraphicsEnvironment` 为Java应用程序提供了特定平台的 `GraphicsDevice` 对象和 `Font` 对象集合。这些 `GraphicsDevice` 可以是各种本机和远端机器的资源，如屏幕、打印机或者是 `Image Buffer` ,甚至是 `Graphics2D` 绘图方法的目标对象。
 * 本日历记事本共有4类：
- CalendarPad.java：该java文件生成的类负责创建本日历记事本程序主窗口。该类含有main方法，	程序从该类开始执行。
- Year.class：该文件负责创建管理年份的对象。
- Month.class：该文件负责创建管理月份对象。
- NotePad.class：该文件负责创建记事本。
+	* `CalendarPad.java`：该java文件生成的类负责创建本日历记事本程序主窗口。该类含有main方法, 程序从该类开始执行。
+	* `Year.class`：该文件负责创建管理年份的对象。
+	* `Month.class`：该文件负责创建管理月份对象。
+	* `NotePad.class`：该文件负责创建记事本。
 
 * CalendarPad类   
 * 主要成员变量(属性)   
